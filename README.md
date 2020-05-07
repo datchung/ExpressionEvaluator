@@ -14,6 +14,13 @@ object result1 = ExpressionEvaluator.Evaluate("(1 + 2) * 2");
 object result2 = ExpressionEvaluator.Evaluate("false and true");
 ```
 
+# Why Use This Library?
+
+* Lightweight
+* Easy to get started and use
+* Customization options
+* Supports older .NET Framework versions
+
 # .NET Support
 
 * Current Release: .NET Framework 4
