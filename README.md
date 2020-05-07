@@ -7,8 +7,8 @@ Simple expression evaluator for C#
 1. Install Nuget package `ExpressionEvaluator`
 2. Sample code
 ```
-// Returns 5
-object result1 = ExpressionEvaluator.Evaluate("1 + 2 * 2*");
+// Returns 6
+object result1 = ExpressionEvaluator.Evaluate("(1 + 2) * 2");
 
 // Returns false
 object result2 = ExpressionEvaluator.Evaluate("false and true");
@@ -19,14 +19,37 @@ object result2 = ExpressionEvaluator.Evaluate("false and true");
 * Current Release: .NET Framework 4
 * Future release: .NET Core (.NET Standard Library)
 
+# Expression Support
+
+* And
+* False
+* Not
+* Null
+* Or
+* True
+
+# Operator Support
+
+* <
+* \>
+* <=
+* \>=
+* <>
+* =
+* \+
+* \-
+* \*
+* \/
+* %
+
 # Options
 
 ## Specify Return Type
 
 Sample code
 ```
-// Returns 5
-int result1 = ExpressionEvaluator.Evaluate<int>("1 + 2 * 2*");
+// Returns 6
+int result1 = ExpressionEvaluator.Evaluate<int>("(1 + 2) * 2");
 
 // Returns false
 bool result2 = ExpressionEvaluator.Evaluate<bool>("false and true");
