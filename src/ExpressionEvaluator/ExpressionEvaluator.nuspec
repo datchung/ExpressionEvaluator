@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>ExpressionEvaluatorCs</id>
+    <version>1.0.0</version>
+    <title>ExpressionEvaluator</title>
+    <authors>Dat Chung</authors>
+    <owners>datchung</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/datchung/ExpressionEvaluator</projectUrl>
+    <description>Simple expression evaluator for C#</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>Expression Eval Evaluate Compute Parse Parser</tags>
+  </metadata>
+</package>
