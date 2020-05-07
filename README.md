@@ -24,7 +24,6 @@ object result2 = ExpressionEvaluator.Evaluate("false and true");
 * And
 * False
 * Not
-* Null
 * Or
 * True
 
