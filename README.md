@@ -14,7 +14,7 @@ object result1 = ExpressionEvaluator.Evaluate("(1 + 2) * 2");
 object result2 = ExpressionEvaluator.Evaluate("false and true");
 ```
 
-For more samples, see [ExpressionEvaluatorTest.cs](../blob/master/src/ExpressionEvaluator.Test/ExpressionEvaluatorTEst.cs)
+For more samples, see [ExpressionEvaluatorTest.cs](../master/src/ExpressionEvaluator.Test/ExpressionEvaluatorTEst.cs)
 
 # Why Use This Library?
 
