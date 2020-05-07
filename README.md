@@ -18,7 +18,7 @@ For more samples, see [ExpressionEvaluatorTest.cs](../master/src/ExpressionEvalu
 
 # Why Use This Library?
 
-* Lightweight
+* Lightweight. Single DLL < 10kb and no third party library dependencies
 * Easy to get started and use
 * Customization options
 * Supports older .NET Framework versions
