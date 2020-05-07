@@ -6,7 +6,7 @@ Simple expression evaluator for C#
 
 1. Install via nuget: `ExpressionEvaluatorCs` https://www.nuget.org/packages/ExpressionEvaluatorCs/
 2. Sample code
-```
+```c#
 // Returns 6
 object result1 = ExpressionEvaluator.Evaluate("(1 + 2) * 2");
 
@@ -55,7 +55,7 @@ For more samples, see [ExpressionEvaluatorTest.cs](../master/src/ExpressionEvalu
 ## Specify Return Type
 
 Sample code
-```
+```c#
 // Returns 6
 int result1 = ExpressionEvaluator.Evaluate<int>("(1 + 2) * 2");
 
