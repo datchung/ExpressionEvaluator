@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ExpressionEvaluator
 {
@@ -11,7 +8,9 @@ namespace ExpressionEvaluator
         {
             if (string.IsNullOrWhiteSpace(expression)) return null;
 
-            return null;
+            // Inspired by https://stackoverflow.com/a/25313985/4856020
+            System.Data.DataTable table = new System.Data.DataTable();
+            return table.Compute(expression, String.Empty);
         }
     }
 }
