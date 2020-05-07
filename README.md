@@ -4,7 +4,7 @@ Simple expression evaluator for C#
 
 # Getting Started
 
-1. Install Nuget package `ExpressionEvaluator`
+1. Install via nuget: `ExpressionEvaluatorCs` https://www.nuget.org/packages/ExpressionEvaluatorCs/
 2. Sample code
 ```
 // Returns 6
