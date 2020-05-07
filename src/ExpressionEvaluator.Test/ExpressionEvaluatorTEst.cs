@@ -30,5 +30,18 @@ namespace ExpressionEvaluator.Test
         {
             Assert.AreEqual(expectedResult, ExpressionEvaluator.Evaluate(expression));
         }
+
+        [TestCase("(1 + 2) * 2", 6)]
+        [TestCase("7 / 2", 4)]
+        public void Evaluate_Int(string expression, int expectedResult)
+        {
+            Assert.AreEqual(expectedResult, ExpressionEvaluator.Evaluate<int>(expression));
+        }
+
+        [TestCase("7 / 2", 3.5)]
+        public void Evaluate_Double(string expression, double expectedResult)
+        {
+            Assert.AreEqual(expectedResult, ExpressionEvaluator.Evaluate<double>(expression));
+        }
     }
 }
