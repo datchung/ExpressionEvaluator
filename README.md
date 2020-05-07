@@ -8,10 +8,10 @@ Simple expression evaluator for C#
 2. Sample code
 ```c#
 // Returns 6
-object result1 = ExpressionEvaluator.Evaluate("(1 + 2) * 2");
+var result1 = ExpressionEvaluator.Evaluate("(1 + 2) * 2");
 
 // Returns false
-object result2 = ExpressionEvaluator.Evaluate("false and true");
+var result2 = ExpressionEvaluator.Evaluate("false and true");
 ```
 
 For more samples, see [ExpressionEvaluatorTest.cs](../master/src/ExpressionEvaluator.Test/ExpressionEvaluatorTEst.cs)
