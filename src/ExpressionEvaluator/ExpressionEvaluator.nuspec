@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ExpressionEvaluatorCs</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>ExpressionEvaluator</title>
     <authors>Dat Chung</authors>
     <owners>datchung</owners>
@@ -13,5 +13,11 @@
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>Copyright 2020</copyright>
     <tags>Expression Eval Evaluate Compute Parse Parser</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.0" />
+    </dependencies>
   </metadata>
+  <files>
+    <file src="bin/Release/ExpressionEvaluator.dll" target="lib/net40/ExpressionEvaluator.dll" />
+  </files>
 </package>
