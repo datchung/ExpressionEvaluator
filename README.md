@@ -16,7 +16,7 @@ object result2 = ExpressionEvaluator.Evaluate("false and true");
 
 # .NET Support
 
-* Current Release: .NET Framework 4.x
+* Current Release: .NET Framework 4
 * Future release: .NET Core (.NET Standard Library)
 
 # Options
