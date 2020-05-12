@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace ExpressionEvaluator.Test
 {
@@ -42,6 +43,21 @@ namespace ExpressionEvaluator.Test
         public void Evaluate_Double(string expression, double expectedResult)
         {
             Assert.AreEqual(expectedResult, ExpressionEvaluator.Evaluate<double>(expression));
+        }
+
+        [TestCase("true && false", false)]
+        public void ReplaceOperators_Bool(string expression, bool expectedResult)
+        {
+            ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
+            {
+                {"and", "&&"},
+                {"or", "||"},
+                {"not", "!" },
+                {"<>", "!=" }
+            });
+
+            Assert.AreEqual(expectedResult, 
+                ExpressionEvaluator.Evaluate<bool>(expression));
         }
     }
 }
