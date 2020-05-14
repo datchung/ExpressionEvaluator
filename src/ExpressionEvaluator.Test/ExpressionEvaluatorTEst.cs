@@ -68,5 +68,25 @@ namespace ExpressionEvaluator.Test
             Assert.AreEqual(expectedResult, 
                 ExpressionEvaluator.ReplaceOperators(expression, allowExtraSpaces));
         }
+
+        [TestCase("1 && 0", false)]
+        [TestCase("1 && 0 || 1", true)]
+        [TestCase("0 && !1", false)]
+        [TestCase("(!0 && 1) || 1", true)]
+        public void ReplaceOperators_Bool(string expression, bool expectedResult)
+        {
+            ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
+            {
+                {"and", "&&"},
+                {"or", "||"},
+                {"not", "!" },
+                {"<>", "!=" },
+                {"true", "1" },
+                {"false", "0" }
+            });
+
+            Assert.AreEqual(expectedResult,
+                ExpressionEvaluator.Evaluate<bool>(expression));
+        }
     }
 }
