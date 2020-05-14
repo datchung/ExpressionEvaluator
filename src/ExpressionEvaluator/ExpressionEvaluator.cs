@@ -56,7 +56,7 @@ namespace ExpressionEvaluator
                     RegexOptions.IgnoreCase);
             }
 
-            return replacedExpression;
+            return replacedExpression.Trim();
         }
 
         public static bool IsOperator(string operatorString)
