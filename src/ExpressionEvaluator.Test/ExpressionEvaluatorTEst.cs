@@ -45,19 +45,22 @@ namespace ExpressionEvaluator.Test
             Assert.AreEqual(expectedResult, ExpressionEvaluator.Evaluate<double>(expression));
         }
 
-        [TestCase("true && false", false)]
-        public void ReplaceOperators_Bool(string expression, bool expectedResult)
+        [TestCase("true && false", "true and false")]
+        [TestCase("true && false || false", "true and false or false")]
+        [TestCase("true && !false", "true and not false")]
+        public void ReplaceOperators(string expression, string expectedResult)
         {
             ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
             {
                 {"and", "&&"},
                 {"or", "||"},
                 {"not", "!" },
-                {"<>", "!=" }
+                {"<>", "!=" },
+                //true, false
             });
-
+            
             Assert.AreEqual(expectedResult, 
-                ExpressionEvaluator.Evaluate<bool>(expression));
+                ExpressionEvaluator.ReplaceOperators(expression));
         }
     }
 }

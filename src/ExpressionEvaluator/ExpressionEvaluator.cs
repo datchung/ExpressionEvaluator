@@ -39,28 +39,71 @@ namespace ExpressionEvaluator
             OperatorMap = operatorMap;
         }
 
-        private static string ReplaceOperators(string expression)
+        public static string ReplaceOperators(string expression)
         {
             if (OperatorMap == null || OperatorMap.Count == 0) return expression;
 
-            var replacedExpression = new StringBuilder(expression);
-            foreach(var operatorPair in OperatorMap)
+            var replacedExpression = expression;
+            foreach (var operatorPair in OperatorMap)
             {
-                replacedExpression.Replace($" {operatorPair.Value} ", $" {operatorPair.Key} ");
-
-                // Handle first operator
-                //if (replacedExpression.($"{operatorPair.Value} "))
-                //    replacedExpression.ReplaceFirst($"{operatorPair.Value} ", $"{operatorPair.Key} ");
-
-                //// Handle last operator
-                //if (replacedExpression.EndsWith($" {operatorPair.Value}"))
-                //    replacedExpression = replacedExpression.ReplaceLast($" {operatorPair.Value}", $" {operatorPair.Key}");
-
-                //replacedExpression = Regex.Replace(replacedExpression,
-                //     "\\b" + Regex.Escape(operatorPair.Value) + "\\b", operatorPair.Key, RegexOptions.IgnoreCase);
+                var search = IsOperator(operatorPair.Key) ? 
+                    GetOperatorSearch(operatorPair.Value) :
+                    GetNonOperatorSearch(operatorPair.Value);
+                
+                replacedExpression = Regex.Replace(
+                    replacedExpression,
+                    search, $" {operatorPair.Key} ",
+                    RegexOptions.IgnoreCase);
             }
 
-            return replacedExpression.ToString();
+            return replacedExpression;
         }
+
+        public static bool IsOperator(string operatorString)
+        {
+            if (string.IsNullOrWhiteSpace(operatorString)) return false;
+
+            var notOperators = new[] { "not", "true", "false" };
+            operatorString = operatorString.ToLower();
+            foreach (var notOperator in notOperators)
+            {
+                if (operatorString == notOperator) return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Operators should begin with space and end with space.
+        /// Eg.
+        /// a and b
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static string GetOperatorSearch(string o)
+        {
+            return "\\s" + Regex.Escape(o) + "\\s";
+        }
+
+        /// <summary>
+        /// Operators may begin with space, may end with space, or both, or none.
+        /// Eg.
+        ///  !a
+        /// ! a
+        ///  ! a
+        /// !a
+        /// </summary>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static string GetNonOperatorSearch(string o)
+        {
+            var escaped = Regex.Escape(o);   
+            return $"\\s{escaped}|{escaped}\\s|\\s{escaped}\\s";
+        }
+
+        //private static bool IsNot(string operatorString)
+        //{
+        //    return !string.IsNullOrWhiteSpace(operatorString) && operatorString.ToLower() == "not";
+        //}
     }
 }

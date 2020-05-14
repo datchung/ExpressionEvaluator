@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="ExpressionEvaluatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringBuilderExtensionsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
