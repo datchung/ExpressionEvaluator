@@ -65,4 +65,18 @@ bool result2 = ExpressionEvaluator.Evaluate<bool>("false and true");
 
 ## Specify Operator Mapping
 
-TBD
+Sample code
+```c#
+ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
+{
+    {"and", "&&"},
+    {"or", "||"},
+    {"not", "!" },
+    {"<>", "!=" },
+    {"true", "1" },
+    {"false", "0" }
+});
+
+// Returns false
+bool result = ExpressionEvaluator.Evaluate<bool>("0 && !1");
+```
