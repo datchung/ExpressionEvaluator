@@ -90,5 +90,5 @@ ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
 });
 
 // Returns 6
-bool result = ExpressionEvaluator.Evaluate<int>("(1 plus 2) times 2");
+int result = ExpressionEvaluator.Evaluate<int>("(1 plus 2) times 2");
 ```
