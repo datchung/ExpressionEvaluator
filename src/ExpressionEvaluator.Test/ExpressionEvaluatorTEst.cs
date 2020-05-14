@@ -73,7 +73,7 @@ namespace ExpressionEvaluator.Test
         [TestCase("1 && 0 || 1", true)]
         [TestCase("0 && !1", false)]
         [TestCase("(!0 && 1) || 1", true)]
-        public void ReplaceOperators_Bool(string expression, bool expectedResult)
+        public void SetOperatorMap_Evaluate_Bool(string expression, bool expectedResult)
         {
             ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
             {
