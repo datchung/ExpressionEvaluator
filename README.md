@@ -80,3 +80,15 @@ ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
 // Returns false
 bool result = ExpressionEvaluator.Evaluate<bool>("0 && !1");
 ```
+
+```c#
+ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
+{
+    {"+", "plus"},
+    {"*", "times"},
+    {"/", "divideBy"},
+});
+
+// Returns 6
+bool result = ExpressionEvaluator.Evaluate<int>("(1 plus 2) times 2");
+```
