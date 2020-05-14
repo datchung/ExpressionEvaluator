@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ExpressionEvaluatorCs</id>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <title>ExpressionEvaluator</title>
     <authors>Dat Chung</authors>
     <owners>datchung</owners>

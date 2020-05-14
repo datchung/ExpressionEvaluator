@@ -54,13 +54,8 @@ namespace ExpressionEvaluator
                     replacedExpression,
                     search, $" {operatorPair.Key} ",
                     RegexOptions.IgnoreCase);
-
-                //var regex = new Regex(search, RegexOptions.IgnoreCase);
-                //var matches = regex.Matches(replacedExpression);
-                //replacedExpression = regex.Replace(replacedExpression, $" {operatorPair.Key} ");
             }
 
-            //return replacedExpression;
             return allowExtraSpaces ? replacedExpression : Regex.Replace(replacedExpression.Trim(), "[ ]{2,}", " ", RegexOptions.None);
         }
 
