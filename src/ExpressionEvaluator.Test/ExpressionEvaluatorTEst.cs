@@ -88,5 +88,20 @@ namespace ExpressionEvaluator.Test
             Assert.AreEqual(expectedResult,
                 ExpressionEvaluator.Evaluate<bool>(expression));
         }
+
+        [TestCase("(1 plus 2) times 2", 6)]
+        [TestCase("7 divideBy 2", 4)]
+        public void SetOperatorMap_Evaluate_Int(string expression, int expectedResult)
+        {
+            ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
+            {
+                {"+", "plus"},
+                {"*", "times"},
+                {"/", "divideBy"},
+            });
+
+            Assert.AreEqual(expectedResult,
+                ExpressionEvaluator.Evaluate<int>(expression));
+        }
     }
 }
