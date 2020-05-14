@@ -39,7 +39,7 @@ namespace ExpressionEvaluator
             OperatorMap = operatorMap;
         }
 
-        public static string ReplaceOperators(string expression)
+        public static string ReplaceOperators(string expression, bool allowExtraSpaces = true)
         {
             if (OperatorMap == null || OperatorMap.Count == 0) return expression;
 
@@ -56,7 +56,7 @@ namespace ExpressionEvaluator
                     RegexOptions.IgnoreCase);
             }
 
-            return replacedExpression;
+            return allowExtraSpaces ? replacedExpression : Regex.Replace(replacedExpression.Trim(), "[ ]{2,}", " ", RegexOptions.None);
         }
 
         public static bool IsOperator(string operatorString)
@@ -100,10 +100,5 @@ namespace ExpressionEvaluator
             var escaped = Regex.Escape(o);   
             return $"\\s{escaped}|{escaped}\\s|\\s{escaped}\\s";
         }
-
-        //private static bool IsNot(string operatorString)
-        //{
-        //    return !string.IsNullOrWhiteSpace(operatorString) && operatorString.ToLower() == "not";
-        //}
     }
 }
