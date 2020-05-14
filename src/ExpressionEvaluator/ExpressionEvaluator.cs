@@ -49,13 +49,18 @@ namespace ExpressionEvaluator
                 var search = IsOperator(operatorPair.Key) ? 
                     GetOperatorSearch(operatorPair.Value) :
                     GetNonOperatorSearch(operatorPair.Value);
-                
+
                 replacedExpression = Regex.Replace(
                     replacedExpression,
                     search, $" {operatorPair.Key} ",
                     RegexOptions.IgnoreCase);
+
+                //var regex = new Regex(search, RegexOptions.IgnoreCase);
+                //var matches = regex.Matches(replacedExpression);
+                //replacedExpression = regex.Replace(replacedExpression, $" {operatorPair.Key} ");
             }
 
+            //return replacedExpression;
             return allowExtraSpaces ? replacedExpression : Regex.Replace(replacedExpression.Trim(), "[ ]{2,}", " ", RegexOptions.None);
         }
 
@@ -82,23 +87,27 @@ namespace ExpressionEvaluator
         /// <returns></returns>
         public static string GetOperatorSearch(string o)
         {
-            return "\\s" + Regex.Escape(o) + "\\s";
+            return "\\s(" + Regex.Escape(o) + ")\\s";
         }
 
         /// <summary>
         /// Operators may begin with space, may end with space, or both, or none.
+        /// May also begin with an open bracket followed by no, one, or multiple spaces.
         /// Eg.
         ///  !a
         /// ! a
         ///  ! a
         /// !a
+        /// (!a
+        /// ( !a
+        /// (  !a
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
         public static string GetNonOperatorSearch(string o)
         {
-            var escaped = Regex.Escape(o);   
-            return $"\\s{escaped}|{escaped}\\s|\\s{escaped}\\s";
+            var escaped = Regex.Escape(o);
+            return $"\\s({escaped})|({escaped})\\s|\\s({escaped})\\s|(?<=[(])({escaped})";
         }
     }
 }

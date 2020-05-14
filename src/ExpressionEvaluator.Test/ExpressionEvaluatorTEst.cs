@@ -45,11 +45,15 @@ namespace ExpressionEvaluator.Test
             Assert.AreEqual(expectedResult, ExpressionEvaluator.Evaluate<double>(expression));
         }
 
-        [TestCase("1 && 0", " true and false ")]
-        [TestCase("1 && 0 || 1", " true and false  or true ")]
-        [TestCase("0 && !1", " false and not true ")]
-        [TestCase("(!0 && 1) || 1", "(! false and true ) or true ")]
-        public void ReplaceOperators(string expression, string expectedResult)
+        [TestCase("1 && 0", true, " true and false ")]
+        [TestCase("1 && 0", false, "true and false")]
+        [TestCase("1 && 0 || 1", true, " true and false  or true ")]
+        [TestCase("1 && 0 || 1", false, "true and false or true")]
+        [TestCase("0 && !1", true, " false and not true ")]
+        [TestCase("0 && !1", false, "false and not true")]
+        [TestCase("(!0 && 1) || 1", true, "( not false  and true ) or true ")]
+        [TestCase("(!0 && 1) || 1", false, "( not false and true ) or true")]
+        public void ReplaceOperators(string expression, bool allowExtraSpaces, string expectedResult)
         {
             ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
             {
@@ -62,7 +66,7 @@ namespace ExpressionEvaluator.Test
             });
             
             Assert.AreEqual(expectedResult, 
-                ExpressionEvaluator.ReplaceOperators(expression));
+                ExpressionEvaluator.ReplaceOperators(expression, allowExtraSpaces));
         }
     }
 }
