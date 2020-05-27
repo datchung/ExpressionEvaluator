@@ -71,8 +71,8 @@ ExpressionEvaluator.SetOperatorMap(new Dictionary<string, string>
 {
     {"and", "&&"},
     {"or", "||"},
-    {"not", "!" },
     {"<>", "!=" },
+    {"not", "!" },
     {"true", "1" },
     {"false", "0" }
 });

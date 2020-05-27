@@ -53,6 +53,7 @@ namespace ExpressionEvaluator.Test
         [TestCase("0 && !1", false, "false and not true")]
         [TestCase("(!0 && 1) || 1", true, "( not false  and true ) or true ")]
         [TestCase("(!0 && 1) || 1", false, "( not false and true ) or true")]
+        [TestCase("(!0 != 1) || 1", true, "( not false  <> true ) or true ")]
         [TestCase("!0", false, "not false")]
         [TestCase(" !0", false, "not false")]
         [TestCase("!0 ", false, "not false")]
@@ -63,8 +64,8 @@ namespace ExpressionEvaluator.Test
             {
                 {"and", "&&"},
                 {"or", "||"},
-                {"not", "!" },
                 {"<>", "!=" },
+                {"not", "!" },
                 {"true", "1" },
                 {"false", "0" }
             });
