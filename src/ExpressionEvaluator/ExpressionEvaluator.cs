@@ -89,6 +89,7 @@ namespace ExpressionEvaluator
         /// Operators may begin with space, may end with space, or both, or none.
         /// May also begin with an open bracket followed by no, one, or multiple spaces.
         /// Eg.
+        /// !a
         ///  !a
         /// ! a
         ///  ! a
@@ -102,7 +103,7 @@ namespace ExpressionEvaluator
         public static string GetNonOperatorSearch(string o)
         {
             var escaped = Regex.Escape(o);
-            return $"\\s({escaped})|({escaped})\\s|\\s({escaped})\\s|(?<=[(])({escaped})";
+            return $"\\s*({escaped})|({escaped})\\s|\\s({escaped})\\s|(?<=[(])({escaped})";
         }
     }
 }
